@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KAYVEE · Network Forensics Platform</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23EAF4FF' stroke='%2300CFE8' stroke-width='4'/%3E%3Cpath d='M22 18v28M22 32l18-14M22 32l18 14' stroke='%232457D6' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/kayvee.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div id="intro" role="presentation">
+  <svg viewBox="0 0 640 200" class="intro-logo" aria-label="KAYVEE">
+    <defs><linearGradient id="ig" x1="0" x2="1"><stop offset="0" stop-color="#00CFE8"/><stop offset="1" stop-color="#2457D6"/></linearGradient></defs>
+    <g class="intro-letters" fill="none" stroke="url(#ig)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path pathLength="1" d="M40 50v100M40 100l50-50M40 100l50 50"/>
+      <path pathLength="1" d="M110 150l35-100 35 100M122 118h46"/>
+      <path pathLength="1" d="M200 50l40 62 40-62M240 112v38"/>
+      <path pathLength="1" d="M300 50l35 100 35-100"/>
+      <path pathLength="1" d="M440 50h-50v100h50M390 100h40"/>
+      <path pathLength="1" d="M470 50v100h45M470 50h50M470 100h40"/>
+    </g>
+    <rect class="intro-beam" x="0" y="30" width="6" height="140" rx="3"/>
+  </svg>
+  <p class="intro-sub">Network forensics laboratory</p>
+  <button class="intro-skip" id="introSkip">Skip</button>
+</div>
+
+<div id="app" class="app" hidden>
+  <header class="top glass">
+    <button class="icon-btn" id="navToggle" aria-label="Toggle sidebar"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="brand" href="#/overview"><span class="brand-mark"></span><span class="brand-name">KAYVEE</span></a>
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="gsearch" type="search" placeholder="Search IP, domain, alert ID or packet text" autocomplete="off" aria-label="Global search">
+      <div id="sresults" class="sresults" hidden></div>
+    </div>
+    <div class="top-right">
+      <button class="status-pill" id="invPill" aria-haspopup="listbox"><i class="dot idle"></i><span id="invText">No investigation</span></button>
+      <div class="menu-wrap">
+        <button class="icon-btn" id="bell" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 1 1 12 0v6l1.5 2h-15zM10 21h4"/></svg><b id="bellCount" hidden>0</b></button>
+        <div class="menu glass" id="bellMenu" hidden></div>
+      </div>
+      <button class="analyst" id="analystBtn"><span class="avatar" id="avatar">A</span><span id="analystName">Analyst</span></button>
+    </div>
+    <div class="menu glass" id="invMenu" hidden></div>
+  </header>
+
+  <nav class="side glass" id="side" aria-label="Main navigation"></nav>
+  <main id="view" class="view" tabindex="-1"></main>
+  <aside class="right" id="right" aria-label="Intelligence panel"></aside>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer glass" id="drawer" hidden aria-modal="true" role="dialog">
+  <header><div><h2 id="drTitle"></h2><p id="drSub"></p></div><button class="icon-btn" id="drClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+  <div id="drBody" class="drawer-body"></div>
+</aside>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="/static/js/util.js"></script>
+<script src="/static/js/fx.js"></script>
+<script src="/static/js/globe.js"></script>
+<script src="/static/js/charts.js"></script>
+<script src="/static/js/views.js"></script>
+<script src="/static/js/views2.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
