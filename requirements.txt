@@ -1,6 +1,4 @@
-# Required
 Flask>=3.0
-# Optional (features degrade gracefully with a clear message if missing)
-reportlab>=4.0      # PDF forensic reports
-maxminddb>=2.0      # GeoIP lookups (needs a GeoLite2/DB-IP .mmdb file in data/geoip/)
-# scapy             # only if you want live capture on Windows/macOS (needs Npcap on Windows)
+gunicorn>=23.0
+reportlab>=4.0
+maxminddb>=2.0
